@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phishing Detector AI</title>
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+      }
+      .main-box {
+        background: white;
+        width: 60%;
+        margin: auto;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+      }
+      input[type="text"] {
+        width: 70%;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button {
+        padding: 15px 30px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .result-box {
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+      }
+      .safe {
+        background-color: #28a745;
+      }
+      .danger {
+        background-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-box">
+      <h1>🔍 AI Phishing URL Detector</h1>
+      <p>
+        This system uses a Random Forest model to scan URLs for malicious
+        features.
+      </p>
+
+      <form action="/predict" method="post">
+        <input
+          type="text"
+          name="url"
+          placeholder="Paste URL here (e.g., http://example.com)"
+          required
+          value="{{ url_input }}"
+        />
+        <button type="submit">SCAN</button>
+      </form>
+
+      {% if prediction_text %}
+      <div class="result-box {{ css_class }}">
+        <h2>{{ prediction_text }}</h2>
+        <p>Phishing Probability: {{ prob }}%</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
