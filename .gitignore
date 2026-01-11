@@ -10,8 +10,8 @@ env/
 .ipynb_checkpoints/
 
 # 4. Large Data Files (Optional - See Note Below)
-# If your test.parquet is larger than 100MB, you MUST uncomment the line below
-# test.parquet
+# If dataset is larger than 100MB, you can add it here.
+
 
 # 5. OS Generated Files (Mac/Windows junk)
 .DS_Store
